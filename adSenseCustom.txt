@@ -1,0 +1,25 @@
+<!-- Dippark AdSense Custom -->
+<script type="fs-cc" fs-cc-categories="marketing, analytics">
+try {
+	var adSenseCustom=function(){"use strict";var e,t,n=1,i=2,r=window,o=document,s=window,a=function(e,t){var n=function(i){o.removeEventListener("DOMContentLoaded",n),o.addEventListener("readystatechange",(function(i){o.removeEventListener("readystatechange",n),setTimeout((function(){e.call(t||s,i)}),1)})),setTimeout((function(){e.call(t||s,i)}),1)},i=function(n){"complete"===o.readyState&&(o.detachEvent("onreadystatechange",i),setTimeout((function(){e.call(t||s,n)}),1))};"loading"!==o.readyState?setTimeout((function(){e.call(t||s,{type:"not-loading"})}),1):o.addEventListener&&o.addEventListener("DOMContentLoaded",n,!!function(){var e=!1;try{var t={get passive(){return e=!0,!1}};r.addEventListener("test",null,t),r.removeEventListener("test",null,t)}catch(n){e=!1}return e}()&&{passive:!0})||o.attachEvent&&o.attachEvent("onreadystatechange",i)},l={};if("undefined"!=typeof navigator&&"undefined"!=typeof document){var c=/Edge\/(\d+)/.exec(navigator.userAgent),d=/MSIE \d/.test(navigator.userAgent),u=/Trident\/(?:[7-9]|\d{2,})\..*rv:(\d+)/.exec(navigator.userAgent);l.IE=!!(d||u||c)}var p=function(e){return e&&e.parentNode?e.parentNode.removeChild(e):null},f=function(e){var t=document.createElement("div");if(l.IE?(t.innerHTML="<br>"+e,t.removeChild(t.firstChild)):t.innerHTML=e,1==t.childNodes.length)return t.removeChild(t.firstChild);for(var n=document.createDocumentFragment();t.firstChild;)n.appendChild(t.firstChild);return n},h=function(){this.document=null,this.selection=null,this.props={side:"after"},this.script=null,this.invoke=null};h.prototype.place=function(e,t,n){null===this.document&&(this.document=document),this.props.side=n||this.props.side;try{if(this.selection=this.filter(t),0===this.selection.length)alert("No elements found for selector:\n"+t);else try{this.script=f("<div>"+e+"</div>"),this.appendScript(this.script.firstElementChild),p(this.script.firstElementChild),this.invoke=this.script.lastElementChild.innerText,p(this.script.lastElementChild)}catch(i){alert("Failed to inject addUnit:\n"+i.message)}}catch(r){alert("Invalid selector:\n"+t+"\n"+r.message)}},h.prototype.appendInserts=function(){var e=this;this.selection.forEach((function(t,n){var i,r;"before"===e.props.side?(i=e.script.cloneNode(!0),r=t,null===i&&null===r&&console.warn("insertSiblingBefore expects non-null arguments"),r.parentNode&&r.parentNode.insertBefore(i,r)):function(e,t){null!==e&&null!==t||console.warn("insertSiblingAfter expects non-null arguments"),t.parentNode&&t.parentNode.insertBefore(e,t.nextSibling)}(e.script.cloneNode(!0),t),e.evil(e.invoke)}))},h.prototype.inject=function(){this.appendInserts()},h.prototype.appendScript=function(e){var t=e.getAttributeNames(),n=this.document.createElement("script");n.addEventListener("load",function(e){this.inject()}.bind(this));for(var i=t.length-1;i>=0;i--)"type"===t[i].toLowerCase()?n.setAttribute(t[i],"text/javascript"):n.setAttribute(t[i],e.getAttribute(t[i]));n.src=n.src.replace("https://","//"),this.document.getElementsByTagName("body")[0].appendChild(n)},h.prototype.evil=function(e){return new Function("return "+e)()},h.prototype.filter=function(e){if(!(-1!==e.indexOf(":nth-of-type-nested")))return this.document.querySelectorAll(e);var t=e.split(":nth-of-type-nested"),n=this.document.querySelectorAll(t[0]);try{window.NodeList&&!NodeList.prototype.filter&&(NodeList.prototype.filter=Array.prototype.filter);var i=/\((.*?)\)/g.exec(t[1]),r=this.evil(i[1].replace("n",""));return n.filter((function(e,t){if(t%r==0||0===t)return!0}))}catch(o){return console.warn("Nested filter failed",o),n}};var v={},m={version:"1.0.0-1666741654",place:function(r,o,s){!function(r,o){if(!0===e||!0===t)return!0===e&&r(n),void(!0===t&&r(i));a((function(o){"not-loading"===o.type?(e=t=!0,r(n)):"DOMContentLoaded"===o.type?(r(n),e=!0):"complete"===o.target.readyState&&(r(i),t=!0)}),o)}((function(e){1===e&&v.client.place(r,o,s)}))}};return v.client=new h,m}();
+	// Ad Unit
+	const adUnit = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3789920651875281" crossorigin="anonymous"><\/script> \
+							<ins class="adsbygoogle" \
+	            	 style="display:block; text-align:center;" \
+	               data-ad-layout="in-article" \
+	               data-ad-format="fluid" \
+	               data-ad-client="ca-pub-3789920651875281" \
+	               data-ad-slot="6717016897"><\/ins> \
+							<script> \
+							     (adsbygoogle = window.adsbygoogle || []).push({}); \
+							<\/script>';
+	// css selector (https://www.w3.org/TR/selectors-3/)
+		var adSelector = "article h2:nth-of-type-nested(2n)";
+	// 'before' or 'after' selector
+		var adPosition = "before";
+	// place ad units
+		adSenseCustom.place(adUnit,adSelector,adPosition);
+} catch(err) {
+	alert("Failed to place the addUnit:\n"+err.message);
+}
+</script>
